@@ -18,7 +18,7 @@ rightBackward = 20  #   Orange
 motor_rpm = 60              #   max rpm of motor on full voltage 
 wheel_diameter = 0.065      #   in meters
 wheel_separation = 0.17     #   in meters
-max_pwm_val = 100           #   100 for Raspberry Pi , 255 for Arduino
+max_pwm_val = 100          #   100 for Raspberry Pi , 255 for Arduino
 min_pwm_val = 15           #   Minimum PWM value that is needed for the robot to move
 
 wheel_radius = wheel_diameter/2
@@ -47,7 +47,6 @@ pwmR.start(0)
 def stop(self):
     global lPWM, rPWM, lDIR, rDIR
     
-    #print('stopping')
     pwmL.ChangeDutyCycle(0)
     GPIO.output(leftForward, GPIO.HIGH)
     GPIO.output(leftBackward, GPIO.HIGH)
@@ -67,6 +66,13 @@ def wheel_vel_executer(self, left_speed, right_speed):
     global max_pwm_val
     global min_pwm_val
     global lPWM, rPWM, lDIR, rDIR
+
+    # Invert both speeds to fix direction
+    left_speed = -left_speed
+    right_speed = -right_speed
+
+    # Swap left and right speeds to fix turning
+    left_speed, right_speed = right_speed, left_speed
 
     lspeedPWM = max(min(((abs(left_speed)/max_speed)*max_pwm_val),max_pwm_val),min_pwm_val)
     rspeedPWM = max(min(((abs(right_speed)/max_speed)*max_pwm_val),max_pwm_val),min_pwm_val)
@@ -112,21 +118,17 @@ class Differential(Node):
         self.rdir_pub = self.create_publisher(Bool, 'rdir', 10)
     
     def callback(self, data):
-        
         global wheel_radius
         global wheel_separation
         
         linear_vel = data.linear.x                  # Linear Velocity of Robot
         angular_vel = data.angular.z                # Angular Velocity of Robot
 
-
         VrplusVl  = 2 * linear_vel
         VrminusVl = angular_vel * wheel_separation
         
-        right_vel = ( VrplusVl + VrminusVl ) / 2      # right wheel velocity along the ground
-        left_vel  = VrplusVl - right_vel              # left wheel velocity along the ground
-        
-        # print (str(left_vel)+"\t"+str(right_vel))
+        right_vel = ( VrplusVl + VrminusVl ) / 2   # right wheel velocity along the ground
+        left_vel  = VrplusVl - right_vel           # left wheel velocity along the ground
         
         if (left_vel == 0.0 and right_vel == 0.0):
             stop(self)
@@ -134,12 +136,11 @@ class Differential(Node):
             wheel_vel_executer(self, left_vel, right_vel)
 
 def main(args=None):
-    
-  rclpy.init(args=args)
-  differential_drive = Differential()
-  rclpy.spin(differential_drive)
-  differential_drive.destroy_node()
-  rclpy.shutdown()
+    rclpy.init(args=args)
+    differential_drive = Differential()
+    rclpy.spin(differential_drive)
+    differential_drive.destroy_node()
+    rclpy.shutdown()
    
 if __name__ == '__main__':
     print('Tortoisebot Differential Drive Initialized with following Params-')
