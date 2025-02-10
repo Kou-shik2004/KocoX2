@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK
+CMAKE_SOURCE_DIR = /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build
+CMAKE_BINARY_DIR = /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build
 
 # Utility rule file for ydlidar_swig_compilation.
 
@@ -70,10 +70,10 @@ python/CMakeFiles/ydlidar_swig_compilation: python/CMakeFiles/_ydlidar.dir/ydlid
 
 python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp: ../python/ydlidar_sdk.i
 python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp: ../python/ydlidar_sdk.i
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Swig compile ydlidar_sdk.i for python"
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && /usr/bin/cmake -E make_directory /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && /usr/bin/cmake -E touch /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && /usr/bin/cmake -E env SWIG_LIB=/usr/share/swig4.0 /usr/bin/swig4.0 -python -module ydlidar -outdir /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python -c++ -interface _ydlidar -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/. -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/core -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/src -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/.. -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python -I/usr/include/python3.10 -o /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python/ydlidar_sdk.i
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Swig compile ydlidar_sdk.i for python"
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && /usr/bin/cmake -E make_directory /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && /usr/bin/cmake -E touch /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && /usr/bin/cmake -E env SWIG_LIB=/usr/share/swig4.0 /usr/bin/swig4.0 -python -module ydlidar -outdir /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python -c++ -interface _ydlidar -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/. -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/core -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/src -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/.. -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python -I/usr/include/python3.10 -o /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python/ydlidar_sdk.i
 
 ydlidar_swig_compilation: python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp
 ydlidar_swig_compilation: python/CMakeFiles/ydlidar_swig_compilation
@@ -85,10 +85,10 @@ python/CMakeFiles/ydlidar_swig_compilation.dir/build: ydlidar_swig_compilation
 .PHONY : python/CMakeFiles/ydlidar_swig_compilation.dir/build
 
 python/CMakeFiles/ydlidar_swig_compilation.dir/clean:
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && $(CMAKE_COMMAND) -P CMakeFiles/ydlidar_swig_compilation.dir/cmake_clean.cmake
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && $(CMAKE_COMMAND) -P CMakeFiles/ydlidar_swig_compilation.dir/cmake_clean.cmake
 .PHONY : python/CMakeFiles/ydlidar_swig_compilation.dir/clean
 
 python/CMakeFiles/ydlidar_swig_compilation.dir/depend:
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/ydlidar_swig_compilation.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/ydlidar_swig_compilation.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : python/CMakeFiles/ydlidar_swig_compilation.dir/depend
 

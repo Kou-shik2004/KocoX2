@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK
+CMAKE_SOURCE_DIR = /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build
+CMAKE_BINARY_DIR = /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/uninstall.dir/compiler_depend.make
 include CMakeFiles/uninstall.dir/progress.make
 
 CMakeFiles/uninstall:
-	/usr/bin/cmake -P /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/cmake_uninstall.cmake
+	/usr/bin/cmake -P /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/cmake_uninstall.cmake
 
 uninstall: CMakeFiles/uninstall
 uninstall: CMakeFiles/uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

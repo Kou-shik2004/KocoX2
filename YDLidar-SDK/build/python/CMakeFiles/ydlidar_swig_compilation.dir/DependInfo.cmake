@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python/ydlidar_sdk.i" "/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp"
+  "/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python/ydlidar_sdk.i" "/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

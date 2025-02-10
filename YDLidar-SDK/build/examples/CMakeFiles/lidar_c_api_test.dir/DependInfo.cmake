@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/examples/lidar_c_api_test.c" "examples/CMakeFiles/lidar_c_api_test.dir/lidar_c_api_test.c.o" "gcc" "examples/CMakeFiles/lidar_c_api_test.dir/lidar_c_api_test.c.o.d"
+  "/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/examples/lidar_c_api_test.c" "examples/CMakeFiles/lidar_c_api_test.dir/lidar_c_api_test.c.o" "gcc" "examples/CMakeFiles/lidar_c_api_test.dir/lidar_c_api_test.c.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/CMakeFiles/ydlidar_sdk.dir/DependInfo.cmake"
+  "/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/CMakeFiles/ydlidar_sdk.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -D_ydlidar_EXPORTS
 
-CXX_INCLUDES = -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/. -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/core -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/src -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/.. -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python -I/usr/include/python3.10
+CXX_INCLUDES = -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/. -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/core -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/src -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/.. -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python -I/usr/include/python3.10
 
 CXX_FLAGS =  -std=c++11 -std=c++11 -fPIC   -std=c++11 -fPIC
 

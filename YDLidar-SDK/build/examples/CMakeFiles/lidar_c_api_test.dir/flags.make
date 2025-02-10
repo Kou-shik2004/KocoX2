@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/. -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/core -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/src -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/.. -I/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/examples
+C_INCLUDES = -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/. -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/core -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/src -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/.. -I/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/examples
 
 C_FLAGS = -fPIC -std=c++11
 

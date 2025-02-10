@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK
+CMAKE_SOURCE_DIR = /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build
+CMAKE_BINARY_DIR = /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build
 
 # Include any dependencies generated for this target.
 include python/CMakeFiles/_ydlidar.dir/depend.make
@@ -72,16 +72,16 @@ include python/CMakeFiles/_ydlidar.dir/flags.make
 python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o: python/CMakeFiles/_ydlidar.dir/flags.make
 python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o: python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx
 python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o: python/CMakeFiles/_ydlidar.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o"
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o -MF CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o.d -o CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o -c /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o"
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o -MF CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o.d -o CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o -c /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx
 
 python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.i"
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx > CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.i
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx > CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.i
 
 python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.s"
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx -o CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.s
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx -o CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.s
 
 # Object files for target _ydlidar
 _ydlidar_OBJECTS = \
@@ -92,21 +92,21 @@ _ydlidar_EXTERNAL_OBJECTS =
 
 python/_ydlidar.so: python/CMakeFiles/_ydlidar.dir/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON_wrap.cxx.o
 python/_ydlidar.so: python/CMakeFiles/_ydlidar.dir/build.make
-python/_ydlidar.so: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+python/_ydlidar.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 python/_ydlidar.so: libydlidar_sdk.a
 python/_ydlidar.so: python/CMakeFiles/_ydlidar.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module _ydlidar.so"
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/_ydlidar.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module _ydlidar.so"
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/_ydlidar.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 python/CMakeFiles/_ydlidar.dir/build: python/_ydlidar.so
 .PHONY : python/CMakeFiles/_ydlidar.dir/build
 
 python/CMakeFiles/_ydlidar.dir/clean:
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python && $(CMAKE_COMMAND) -P CMakeFiles/_ydlidar.dir/cmake_clean.cmake
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python && $(CMAKE_COMMAND) -P CMakeFiles/_ydlidar.dir/cmake_clean.cmake
 .PHONY : python/CMakeFiles/_ydlidar.dir/clean
 
 python/CMakeFiles/_ydlidar.dir/depend:
-	cd /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/CMakeFiles/_ydlidar.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : python/CMakeFiles/_ydlidar.dir/depend
 

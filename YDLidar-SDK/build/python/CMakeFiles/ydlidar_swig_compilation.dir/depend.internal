@@ -14,8 +14,8 @@ python/CMakeFiles/_ydlidar.dir/ydlidar_sdkPYTHON.stamp
  ../core/common/ydlidar_datatype.h
  ../core/common/ydlidar_def.h
  ../core/common/ydlidar_protocol.h
- /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/core/base/typedef.h
- /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/core/common/ydlidar_datatype.h
- /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/core/common/ydlidar_def.h
- /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python/ydlidar_sdk.i
- /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/src/CYdLidar.h
+ /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/core/base/typedef.h
+ /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/core/common/ydlidar_datatype.h
+ /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/core/common/ydlidar_def.h
+ /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python/ydlidar_sdk.i
+ /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/src/CYdLidar.h

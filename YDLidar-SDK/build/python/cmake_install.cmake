@@ -1,4 +1,4 @@
-# Install script for directory: /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/python
+# Install script for directory: /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/python
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -49,7 +49,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages/_ydlidar.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE MODULE FILES "/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/_ydlidar.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE MODULE FILES "/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/_ydlidar.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages/_ydlidar.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages/_ydlidar.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -59,12 +59,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE FILE FILES "/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/ydlidar.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python3/dist-packages" TYPE FILE FILES "/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/ydlidar.py")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/build/python/examples/cmake_install.cmake")
+  include("/home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/build/python/examples/cmake_install.cmake")
 
 endif()
 

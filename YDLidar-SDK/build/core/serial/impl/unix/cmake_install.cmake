@@ -1,4 +1,4 @@
-# Install script for directory: /home/rpi/kocox2_ws/src/tortoisebot/YDLidar-SDK/core/serial/impl/unix
+# Install script for directory: /home/koushik/rosjects/last_ws/src/KocoX2/YDLidar-SDK/core/serial/impl/unix
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
