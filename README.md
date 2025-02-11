@@ -1,18 +1,49 @@
-# Kocox2 : A 2 wheeled differential drive robot with a lidar 
+# KocoX2 Robot
 
-## Prerequisites
+[![ROS2](https://img.shields.io/badge/ROS2-Humble-blue)](https://docs.ros.org/en/humble/)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-orange)](https://releases.ubuntu.com/22.04/)
 
-- Ubuntu 22.04 
-- ros2 Humble installed
+![Robot](robot.png)
 
-## Installation
+A 2-wheeled differential drive robot featuring the YDLidar X2 for autonomous navigation and SLAM capabilities. This is a Learning project.
 
-### 1. System Setup
+> **Note**: This is an open-loop control system. The robot's movement relies on direct motor commands without encoder feedback, which may result in reduced accuracy compared to closed-loop systems. Future versions may implement closed-loop control using encoders for improved precision. 
 
-Ubuntu 22.04 : install ros2 Humble. 
 
-### 2. Create ros2 Workspace
+## Features
 
+- Differential drive system
+- YDLidar X2 for 2D mapping
+- ROS2 Humble support
+- Navigation2 stack integration
+- Cartographer SLAM
+- Gazebo simulation
+- Teleoperation support
+- Autonomous navigation
+
+## Hardware Requirements
+
+### Robot Components
+- Raspberry Pi 4 
+- YDLidar X2
+- 2 DC motors 
+- Motor driver board
+- Power supply (12V)
+
+### Development Computer
+- Ubuntu 22.04 LTS
+- 4GB RAM minimum
+- USB ports for sensors
+
+## Software Installation
+
+### 1. ROS2 Humble Setup
+```bash
+# Follow ROS2 Humble installation instructions from:
+# https://docs.ros.org/en/humble/Installation/Ubuntu-Install.html
+```
+
+### 2. Workspace Creation
 ```bash
 source /opt/ros/humble/setup.bash  
 mkdir -p ~/kocox2_ws/src
@@ -21,24 +52,22 @@ colcon build
 source ~/kocox2_ws/install/setup.bash
 ```
 
-### 3. Install Dependencies
-
+### 3. Dependencies Installation
 ```bash
 sudo apt install \
-  ros-$ROS_DISTRO-joint-state-publisher \
-  ros-$ROS_DISTRO-robot-state-publisher \
-  ros-$ROS_DISTRO-cartographer \
-  ros-$ROS_DISTRO-cartographer-ros \
-  ros-$ROS_DISTRO-gazebo-plugins \
-  ros-$ROS_DISTRO-teleop-twist-keyboard \
-  ros-$ROS_DISTRO-teleop-twist-joy \
-  ros-$ROS_DISTRO-xacro \
-  ros-$ROS_DISTRO-nav2* \
-  ros-$ROS_DISTRO-urdf
+  ros-humble-joint-state-publisher \
+  ros-humble-robot-state-publisher \
+  ros-humble-cartographer \
+  ros-humble-cartographer-ros \
+  ros-humble-gazebo-plugins \
+  ros-humble-teleop-twist-keyboard \
+  ros-humble-teleop-twist-joy \
+  ros-humble-xacro \
+  ros-humble-nav2* \
+  ros-humble-urdf
 ```
 
-### 4. Clone Repository
-
+### 4. KocoX2 Repository Setup
 ```bash
 cd ~/kocox2_ws/src
 git clone https://github.com/Kou-shik2004/KocoX2
@@ -48,34 +77,61 @@ source /opt/ros/humble/setup.bash
 source ~/kocox2_ws/install/setup.bash
 ```
 
-## Usage
+## YDLidar X2 Setup
 
-### Simulation
+### 1. SDK Installation
+```bash
+# Install dependencies
+sudo apt install cmake pkg-config swig python3-pip
 
-![simulation](KocoX2/sim)
+# Build YDLidar SDK
+cd YDLidar-SDK/build
+cmake ..
+make
+sudo make install
 
-1. Start the simulation environment:
+# Install Python package
+cd YDLidar-SDK
+pip install .
+```
+
+### 2. LiDAR Testing
+```bash
+# Set USB permissions
+sudo chmod 777 /dev/ttyUSB0
+
+# Run test program
+cd ~/YDLidar-SDK/build
+./tri_test
+```
+
+Note: Keep both YDLidar SDK and YDLidar ROS2 driver outside the src directory.
+
+## Usage Instructions
+
+### Simulation Environment
+
+![simulation](sim.png)
+
+1. Launch Simulation
 ```bash
 ros2 launch kocox2_bringup bringup.launch.py use_sim_time:=True
 ```
 
-2. For teleoperation:
+2. Teleoperation
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
-3. For autonomous navigation with SLAM:
+3. SLAM Navigation
 ```bash
 ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=True exploration:=True
 ```
 
-### Real Robot Setup
+### Real Robot Operation
 
-#### Network Configuration
-
-1. Locate the SD card's "writable" folder
-2. Navigate to "/etc/netplan/"
-3. Edit "50-cloud-init.yaml":
+#### Robot Network Setup
+1. Configure WiFi in `/etc/netplan/50-cloud-init.yaml`:
 ```yaml
 wifis:
   wlan0:
@@ -86,53 +142,100 @@ wifis:
     dhcp4: true
 ```
 
-#### Connecting to the Robot
-
-1. SSH into the robot:
+2. Connect to Robot
 ```bash
-ssh kocox2@<robot_ip>    # Default password: raspberry
+ssh <rpi_username>@raspberrypi.local
 ```
 
-2. On the robot, launch the base nodes:
+#### SLAM and Navigation
+
+![rviz](rviz.png)
+
+![map](map.png)
+
+1. Start Mapping
 ```bash
-source /opt/ros/humble/setup.bash
-kocox2 launch kocox2_bringup bringup.launch.py use_sim_time:=False
+ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=True
 ```
 
-3. On your PC, for visualization:
+2. Save Map
 ```bash
-kocox2 launch kocox2_description rviz.launch.py
+ros2 run nav2_map_server map_saver_cli -f /path_to_map/name_of_map_file.yaml
 ```
 
-### SLAM and Navigation
-
-1. Start mapping:
+3. Navigate with Existing Map
 ```bash
-kocox2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=True
+ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/map_file_name.yaml
+```
+![nodes](nodes.png)
+
+![topics](topics.png)
+
+### Development PC Setup
+
+1. Clone Repository
+```bash
+cd ~/kocox2_ws/src
+git clone https://github.com/Kou-shik2004/KocoX2
 ```
 
-2. Save the map:
+2. Configure ROS Domain
 ```bash
-kocox2 run nav2_map_server map_saver_cli -f /path_to_map/name_of_map_file.yaml
+echo "export ROS_DOMAIN_ID=<unique_number>" >> ~/.bashrc
+source ~/.bashrc
 ```
 
-3. Load existing map and navigate:
+3. Launch Visualization
 ```bash
-kocox2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/map_file_name.yaml
+ros2 launch kocox2_description rviz.launch.py
 ```
 
-## Multi-Robot Setup
+## Package Structure
 
-For multiple robots, set different domain IDs:
-```bash
-export ROS_DOMAIN_ID=<unique_number>
-```
+- **kocox2_bringup**: Launch files and robot initialization
+- **kocox2_description**: Robot URDF and visual models
+- **kocox2_navigation**: Navigation parameters and configuration
+- **kocox2_slam**: SLAM configuration
 
-## Tips
-- Always source kocox2 and workspace in new terminals:
-  ```bash
-  source /opt/ros/humble/setup.bash
-  source ~/kocox2_ws/install/setup.bash
-  ```
-- When loading a saved map, ensure the robot is placed at approximately the same position as during mapping
-- For the real robot, make sure to use `use_sim_time:=False`
+## Configuration
+
+### Navigation Parameters
+Located in `config/nav2_params.yaml`:
+- DWB planner parameters
+- Costmap configurations
+- AMCL parameters
+
+### SLAM Parameters
+Located in `config/slam.lua`:
+- Cartographer configurations
+- Loop closure settings
+- Map resolution
+
+## Troubleshooting
+
+1. **USB Connection Issues**
+   - Check USB permissions
+   - Verify correct port assignment
+   - Test with `tri_test` program
+
+2. **Navigation Problems**
+   - Verify TF tree completeness
+   - Check sensor data publication
+   - Validate costmap updates
+
+3. **Network Issues**
+   - Confirm ROS_DOMAIN_ID settings
+   - Check network connectivity
+   - Verify hostname resolution
+
+## Important Tips
+
+- Always source ROS2 and workspace in new terminals
+- Place robot at original mapping position when using saved maps
+- Use `use_sim_time:=False` for real robot operation
+- Backup navigation parameters before modification
+- Regular calibration improves performance
+  
+  
+
+
