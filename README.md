@@ -1,30 +1,24 @@
-# Kocox2 codes
-
-# kocox2 ROS2
-
-A complete guide to set up and operate your kocox2 with ROS2 Humble/Galactic.
+# Kocox2 : A 2 wheeled differential drive robot with a lidar 
 
 ## Prerequisites
 
-- Ubuntu 22.04 (ROS2 Humble) or Ubuntu 20.04 (ROS2 Galactic)
-- ROS2 Humble or Galactic installed
-- SD card with kocox2 Image (optional)
+- Ubuntu 22.04 
+- ros2 Humble installed
 
 ## Installation
 
 ### 1. System Setup
 
-If using Ubuntu 22.04, install ROS2 Humble.
-If using Ubuntu 20.04, install ROS2 Galactic.
+Ubuntu 22.04 : install ros2 Humble. 
 
-### 2. Create ROS2 Workspace
+### 2. Create ros2 Workspace
 
 ```bash
-source /opt/ros/galactic/setup.bash  # or humble for Ubuntu 22.04
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/
+source /opt/ros/humble/setup.bash  
+mkdir -p ~/kocox2_ws/src
+cd ~/kocox2_ws/
 colcon build
-source ~/ros2_ws/install/setup.bash
+source ~/kocox2_ws/install/setup.bash
 ```
 
 ### 3. Install Dependencies
@@ -46,17 +40,19 @@ sudo apt install \
 ### 4. Clone Repository
 
 ```bash
-cd ~/ros2_ws/src
-git clone -b ros2-galactic https://github.com/rigbetellabs/kocox2.git
-cd ~/ros2_ws/
+cd ~/kocox2_ws/src
+git clone https://github.com/Kou-shik2004/KocoX2
+cd ~/kocox2_ws/
 colcon build
-source /opt/ros/galactic/setup.bash
-source ~/ros2_ws/install/setup.bash
+source /opt/ros/humble/setup.bash
+source ~/kocox2_ws/install/setup.bash
 ```
 
 ## Usage
 
 ### Simulation
+
+![simulation](KocoX2/sim)
 
 1. Start the simulation environment:
 ```bash
@@ -94,36 +90,35 @@ wifis:
 
 1. SSH into the robot:
 ```bash
-ssh kocox2@<robot_ip>
-# Default password: raspberry
+ssh kocox2@<robot_ip>    # Default password: raspberry
 ```
 
 2. On the robot, launch the base nodes:
 ```bash
-source /opt/ros/galactic/setup.bash
-ros2 launch kocox2_bringup bringup.launch.py use_sim_time:=False
+source /opt/ros/humble/setup.bash
+kocox2 launch kocox2_bringup bringup.launch.py use_sim_time:=False
 ```
 
 3. On your PC, for visualization:
 ```bash
-ros2 launch kocox2_description rviz.launch.py
+kocox2 launch kocox2_description rviz.launch.py
 ```
 
 ### SLAM and Navigation
 
 1. Start mapping:
 ```bash
-ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=True
+kocox2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=True
 ```
 
 2. Save the map:
 ```bash
-ros2 run nav2_map_server map_saver_cli -f /path_to_map/name_of_map_file.yaml
+kocox2 run nav2_map_server map_saver_cli -f /path_to_map/name_of_map_file.yaml
 ```
 
 3. Load existing map and navigate:
 ```bash
-ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/map_file_name.yaml
+kocox2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/map_file_name.yaml
 ```
 
 ## Multi-Robot Setup
@@ -134,10 +129,10 @@ export ROS_DOMAIN_ID=<unique_number>
 ```
 
 ## Tips
-- Always source ROS2 and workspace in new terminals:
+- Always source kocox2 and workspace in new terminals:
   ```bash
-  source /opt/ros/galactic/setup.bash
-  source ~/ros2_ws/install/setup.bash
+  source /opt/ros/humble/setup.bash
+  source ~/kocox2_ws/install/setup.bash
   ```
 - When loading a saved map, ensure the robot is placed at approximately the same position as during mapping
 - For the real robot, make sure to use `use_sim_time:=False`
