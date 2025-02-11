@@ -1,14 +1,14 @@
 # Kocox2 codes
 
-# TortoiseBot ROS2
+# kocox2 ROS2
 
-A complete guide to set up and operate your TortoiseBot with ROS2 Humble/Galactic.
+A complete guide to set up and operate your kocox2 with ROS2 Humble/Galactic.
 
 ## Prerequisites
 
 - Ubuntu 22.04 (ROS2 Humble) or Ubuntu 20.04 (ROS2 Galactic)
 - ROS2 Humble or Galactic installed
-- SD card with TortoiseBot Image (optional)
+- SD card with kocox2 Image (optional)
 
 ## Installation
 
@@ -47,7 +47,7 @@ sudo apt install \
 
 ```bash
 cd ~/ros2_ws/src
-git clone -b ros2-galactic https://github.com/rigbetellabs/tortoisebot.git
+git clone -b ros2-galactic https://github.com/rigbetellabs/kocox2.git
 cd ~/ros2_ws/
 colcon build
 source /opt/ros/galactic/setup.bash
@@ -60,7 +60,7 @@ source ~/ros2_ws/install/setup.bash
 
 1. Start the simulation environment:
 ```bash
-ros2 launch tortoisebot_bringup bringup.launch.py use_sim_time:=True
+ros2 launch kocox2_bringup bringup.launch.py use_sim_time:=True
 ```
 
 2. For teleoperation:
@@ -70,7 +70,7 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 3. For autonomous navigation with SLAM:
 ```bash
-ros2 launch tortoisebot_bringup autobringup.launch.py use_sim_time:=True exploration:=True
+ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=True exploration:=True
 ```
 
 ### Real Robot Setup
@@ -94,26 +94,26 @@ wifis:
 
 1. SSH into the robot:
 ```bash
-ssh tortoisebot@<robot_ip>
+ssh kocox2@<robot_ip>
 # Default password: raspberry
 ```
 
 2. On the robot, launch the base nodes:
 ```bash
 source /opt/ros/galactic/setup.bash
-ros2 launch tortoisebot_bringup bringup.launch.py use_sim_time:=False
+ros2 launch kocox2_bringup bringup.launch.py use_sim_time:=False
 ```
 
 3. On your PC, for visualization:
 ```bash
-ros2 launch tortoisebot_description rviz.launch.py
+ros2 launch kocox2_description rviz.launch.py
 ```
 
 ### SLAM and Navigation
 
 1. Start mapping:
 ```bash
-ros2 launch tortoisebot_bringup autobringup.launch.py use_sim_time:=False exploration:=True
+ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=True
 ```
 
 2. Save the map:
@@ -123,7 +123,7 @@ ros2 run nav2_map_server map_saver_cli -f /path_to_map/name_of_map_file.yaml
 
 3. Load existing map and navigate:
 ```bash
-ros2 launch tortoisebot_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/map_file_name.yaml
+ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/map_file_name.yaml
 ```
 
 ## Multi-Robot Setup
