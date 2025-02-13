@@ -10,7 +10,7 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
   nav2_launch_dir = os.path.join(get_package_share_directory('nav2_bringup'), 'launch')
   prefix_address = get_package_share_directory('kocox2_navigation') 
-  params_file= os.path.join(prefix_address, 'config', 'nav2_params_robot.yaml')
+  params_file= os.path.join(prefix_address, 'config', 'nav2_params.yaml')
 
   use_sim_time = LaunchConfiguration('use_sim_time', default='true')
   map_dir = LaunchConfiguration(
@@ -20,7 +20,7 @@ def generate_launch_description():
           'maps',
           'room.yaml'))
 
-  param_file_name = 'nav2_params_robot.yaml'
+  param_file_name = 'nav2_params.yaml'
   param_dir = LaunchConfiguration(
       'params_file',
       default=os.path.join(
