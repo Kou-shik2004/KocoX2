@@ -16,7 +16,7 @@ def generate_launch_description():
   rviz_launch_dir=os.path.join(get_package_share_directory('kocox2_description'), 'launch')
   gazebo_launch_dir=os.path.join(get_package_share_directory('kocox2_gazebo'), 'launch')
   ydlidar_launch_dir=os.path.join(get_package_share_directory('ydlidar_ros2_driver'), 'launch')
-  camera_launch_dir=os.path.join(get_package_share_directory('v4l2_camera'), 'launch')
+  #camera_launch_dir=os.path.join(get_package_share_directory('v4l2_camera'), 'launch')
   cartographer_launch_dir=os.path.join(get_package_share_directory('kocox2_slam'), 'launch')
   prefix_address = get_package_share_directory('kocox2_navigation') 
   default_model_path = os.path.join(pkg_share, 'models/urdf/kocox2.xacro')
@@ -70,19 +70,28 @@ def generate_launch_description():
         executable='differential.py',
         name ='differential_drive_publisher',
     )
-  camera_drive_node = Node(
-        package='v4l2_camera',
-        condition=IfCondition(PythonExpression(['not ', use_sim_time])),
-        executable='v4l2_camera_node',
-        name ='camera_publisher',
-    )
   camera_node = Node(
-      package='camera_ros',
-      condition=IfCondition(PythonExpression(['not ', use_sim_time])),
-      executable='camera_node',
-      name ='pi_camera',
-      parameters= [{'height': 360},{'width': 480}],
-    )
+    package='v4l2_camera',
+    condition=IfCondition(PythonExpression(['not ', use_sim_time])),
+    executable='v4l2_camera_node',
+    name='camera_publisher',
+    output='screen',
+    parameters=[{
+        'video_device': '/dev/video0',
+        'pixel_format': 'YUYV',  # Changed from JPEG to YUYV
+        'image_size': [640, 480],
+        'camera_frame_id': 'camera',
+        'use_camera_info': False,
+        'publish_rate': 30.0,
+        'brightness': 50,
+        'contrast': 0,
+        'white_balance_auto': 1
+    }]
+    ,
+    remappings=[
+        ('camera_info', '/image_raw/camera_info'),
+    ]
+)
   robot_state_publisher_node = launch_ros.actions.Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -131,7 +140,8 @@ def generate_launch_description():
     joint_state_publisher_node,
     ydlidar_launch_cmd,
     differential_drive_node,
-    camera_drive_node,
+    camera_node,
+    #camera_drive_node,
     gazebo_launch_cmd,
     navigation_launch_cmd, 
     cartographer_launch_cmd
