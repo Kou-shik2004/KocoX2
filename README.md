@@ -151,7 +151,6 @@ ssh <rpi_username>@raspberrypi.local
 
 ![rviz](rviz.png)
 
-![map](map.png)
 
 1. Start Mapping
 ```bash
