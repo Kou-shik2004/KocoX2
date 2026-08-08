@@ -5,6 +5,12 @@
 
 ![Robot](robot.png)
 
+
+
+https://github.com/user-attachments/assets/7e7bd0c5-28c3-4c3f-9b76-30aeba73fdc7
+
+
+
 A 2-wheeled differential drive robot featuring the YDLidar X2 for autonomous navigation and SLAM capabilities. This is a Learning project.
 
 > **Note**: This is an open-loop control system. The robot's movement relies on direct motor commands without encoder feedback, which may result in reduced accuracy compared to closed-loop systems. Future versions may implement closed-loop control using encoders for improved precision. 
