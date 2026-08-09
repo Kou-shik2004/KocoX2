@@ -16,7 +16,7 @@ def generate_launch_description():
   map_dir = LaunchConfiguration(
       'map',
       default=os.path.join(
-          get_package_share_directory('kocox2_bringup'),
+          get_package_share_directory('kocox2_navigation'),
           'maps',
           'room2.yaml'))
 

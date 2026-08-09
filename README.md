@@ -129,9 +129,9 @@ Four packages:
 
 | Package | Contents |
 |---|---|
-| `kocox2_bringup` | All launch files, plus the saved maps (`maps/`) |
+| `kocox2_bringup` | All launch files |
 | `kocox2_description` | URDF/xacro, meshes, Gazebo plugin config, the simulation world, RViz configs |
-| `kocox2_navigation` | Nav2 params (`nav2_params_robot.yaml`, `nav2_params_simulation.yaml`) and the Cartographer config (`slam.lua`) |
+| `kocox2_navigation` | Nav2 params (`nav2_params_robot.yaml`, `nav2_params_simulation.yaml`), the Cartographer config (`slam.lua`), and the saved maps (`maps/`) |
 | `kocox2_firmware` | `differential.py`, the only node this repo runs on its own hardware |
 
 `differential.py` subscribes to `cmd_vel` and drives the motors over `RPi.GPIO`: it converts
