@@ -12,13 +12,13 @@ from launch_ros.descriptions import ParameterValue
 
 def generate_launch_description():
   pkg_share = launch_ros.substitutions.FindPackageShare(package='kocox2_description').find('kocox2_description')
-  navigation_dir = os.path.join(get_package_share_directory('kocox2_navigation'), 'launch')
-  rviz_launch_dir=os.path.join(get_package_share_directory('kocox2_description'), 'launch')
-  gazebo_launch_dir=os.path.join(get_package_share_directory('kocox2_gazebo'), 'launch')
+  navigation_dir = os.path.join(get_package_share_directory('kocox2_bringup'), 'launch')
+  rviz_launch_dir=os.path.join(get_package_share_directory('kocox2_bringup'), 'launch')
+  gazebo_launch_dir=os.path.join(get_package_share_directory('kocox2_bringup'), 'launch')
   ydlidar_launch_dir=os.path.join(get_package_share_directory('ydlidar_ros2_driver'), 'launch')
   #camera_launch_dir=os.path.join(get_package_share_directory('v4l2_camera'), 'launch')
-  cartographer_launch_dir=os.path.join(get_package_share_directory('kocox2_slam'), 'launch')
-  prefix_address = get_package_share_directory('kocox2_navigation') 
+  cartographer_launch_dir=os.path.join(get_package_share_directory('kocox2_bringup'), 'launch')
+  prefix_address = get_package_share_directory('kocox2_navigation')
   default_model_path = os.path.join(pkg_share, 'models/urdf/kocox2.xacro')
   
   params_file_sim = os.path.join(prefix_address, 'config', 'nav2_params_simulation.yaml')

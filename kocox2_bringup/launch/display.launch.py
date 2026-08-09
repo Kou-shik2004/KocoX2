@@ -10,11 +10,9 @@ from launch_ros.descriptions import ParameterValue
 
 def generate_launch_description():
     pkg_share = launch_ros.substitutions.FindPackageShare(package='kocox2_description').find('kocox2_description')
-    gazebo_pkg_share = launch_ros.substitutions.FindPackageShare(package='kocox2_gazebo').find('kocox2_gazebo')
     default_model_path = os.path.join(pkg_share, 'models/urdf/kocox2.xacro')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/kocox2_navigation.rviz')
-    world_path=os.path.join(gazebo_pkg_share, 'worlds/room2.sdf'),
-    sdf_path=os.path.join(pkg_share, 'models/urdf/kocox2', 'model.sdf'),
+    world_path=os.path.join(pkg_share, 'worlds/room2.sdf'),
     use_sim_time = LaunchConfiguration('use_sim_time')
     robot_state_publisher_node = launch_ros.actions.Node(
         package='robot_state_publisher',

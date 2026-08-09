@@ -8,7 +8,7 @@ from launch_ros.actions import Node
 from launch.conditions import IfCondition
 
 def generate_launch_description():
-  prefix_address = get_package_share_directory('kocox2_slam') 
+  prefix_address = get_package_share_directory('kocox2_navigation')
   config_directory = os.path.join(prefix_address, 'config')
   slam_config = 'slam.lua'
   res = LaunchConfiguration('resolution', default='0.05')

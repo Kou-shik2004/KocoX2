@@ -6,7 +6,7 @@ import os
 
 
 def generate_launch_description():
-    pkg_share = launch_ros.substitutions.FindPackageShare(package='kocox2_gazebo').find('kocox2_gazebo')
+    pkg_share = launch_ros.substitutions.FindPackageShare(package='kocox2_description').find('kocox2_description')
     world_path=os.path.join(pkg_share, 'worlds/room2.sdf'),
     use_sim_time = LaunchConfiguration('use_sim_time')
 

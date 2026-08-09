@@ -12,8 +12,8 @@ from launch_ros.descriptions import ParameterValue
 
 def generate_launch_description():
     pkg_share = launch_ros.substitutions.FindPackageShare(package='kocox2_description').find('kocox2_description')
-    rviz_launch_dir=os.path.join(get_package_share_directory('kocox2_description'), 'launch')
-    gazebo_launch_dir=os.path.join(get_package_share_directory('kocox2_gazebo'), 'launch')
+    rviz_launch_dir=os.path.join(get_package_share_directory('kocox2_bringup'), 'launch')
+    gazebo_launch_dir=os.path.join(get_package_share_directory('kocox2_bringup'), 'launch')
     ydlidar_launch_dir=os.path.join(get_package_share_directory('ydlidar_ros2_driver'), 'launch')
     default_model_path = os.path.join(pkg_share, 'models/urdf/kocox2.xacro')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/sensors.rviz')

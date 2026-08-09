@@ -1,64 +1,24 @@
-# KocoX2 Robot
+# KocoX2
 
-[![ROS2](https://img.shields.io/badge/ROS2-Humble-blue)](https://docs.ros.org/en/humble/)
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-orange)](https://releases.ubuntu.com/22.04/)
-
-![Robot](robot.png)
-
-
+A 2-wheel differential-drive robot on a Raspberry Pi, running Cartographer SLAM and Nav2
+navigation with a YDLidar X2. Built as a learning project.
 
 https://github.com/user-attachments/assets/7e7bd0c5-28c3-4c3f-9b76-30aeba73fdc7
 
+![Robot](docs/images/robot.png)
 
+The robot runs Cartographer for SLAM and Nav2 (NavFn planner, DWB controller) for navigation,
+with a YDLidar X2 for scanning, a USB camera, and a Raspberry Pi GPIO node driving two DC motors
+through an H-bridge. The work here is hardware integration: wiring the lidar and camera drivers,
+writing the motor driver, getting TF and the sensor frames right, and tuning the costmaps and
+SLAM config for this base.
 
-A 2-wheeled differential drive robot featuring the YDLidar X2 for autonomous navigation and SLAM capabilities. This is a Learning project.
+## Requirements
 
-> **Note**: This is an open-loop control system. The robot's movement relies on direct motor commands without encoder feedback, which may result in reduced accuracy compared to closed-loop systems. Future versions may implement closed-loop control using encoders for improved precision. 
+- Ubuntu 22.04, ROS 2 Humble, Gazebo Classic
+- Raspberry Pi 4 (real robot), YDLidar X2, USB camera, 2 DC motors with a driver board, 12V
+  supply
 
-
-## Features
-
-- Differential drive system
-- YDLidar X2 for 2D mapping
-- ROS2 Humble support
-- Navigation2 stack integration
-- Cartographer SLAM
-- Gazebo simulation
-- Teleoperation support
-- Autonomous navigation
-
-## Hardware Requirements
-
-### Robot Components
-- Raspberry Pi 4 
-- YDLidar X2
-- 2 DC motors 
-- Motor driver board
-- Power supply (12V)
-
-### Development Computer
-- Ubuntu 22.04 LTS
-- 4GB RAM minimum
-- USB ports for sensors
-
-## Software Installation
-
-### 1. ROS2 Humble Setup
-```bash
-# Follow ROS2 Humble installation instructions from:
-# https://docs.ros.org/en/humble/Installation/Ubuntu-Install.html
-```
-
-### 2. Workspace Creation
-```bash
-source /opt/ros/humble/setup.bash  
-mkdir -p ~/kocox2_ws/src
-cd ~/kocox2_ws/
-colcon build
-source ~/kocox2_ws/install/setup.bash
-```
-
-### 3. Dependencies Installation
 ```bash
 sudo apt install \
   ros-humble-joint-state-publisher \
@@ -67,180 +27,132 @@ sudo apt install \
   ros-humble-cartographer-ros \
   ros-humble-gazebo-plugins \
   ros-humble-teleop-twist-keyboard \
-  ros-humble-teleop-twist-joy \
   ros-humble-xacro \
   ros-humble-nav2* \
-  ros-humble-urdf
+  ros-humble-urdf \
+  ros-humble-v4l2-camera \
+  ros-humble-rviz2 \
+  python3-rpi.gpio
 ```
 
-### 4. KocoX2 Repository Setup
+## Running it
+
+### Workspace setup
+
 ```bash
+source /opt/ros/humble/setup.bash
+mkdir -p ~/kocox2_ws/src
 cd ~/kocox2_ws/src
 git clone https://github.com/Kou-shik2004/KocoX2
-cd ~/kocox2_ws/
+cd ~/kocox2_ws
 colcon build
-source /opt/ros/humble/setup.bash
-source ~/kocox2_ws/install/setup.bash
+source install/setup.bash
 ```
 
-## YDLidar X2 Setup
+The YDLidar SDK and ROS 2 driver are vendored inside this repo (`YDLidar-SDK/`,
+`ydlidar_ros2_driver/`) and build as part of the workspace above. To also build and install the
+SDK standalone for `tri_test` and other SDK tools:
 
-### 1. SDK Installation
 ```bash
-# Install dependencies
 sudo apt install cmake pkg-config swig python3-pip
-
-# Build YDLidar SDK
-cd YDLidar-SDK/build
+cd ~/kocox2_ws/src/KocoX2/YDLidar-SDK/build
 cmake ..
 make
 sudo make install
-
-# Install Python package
-cd YDLidar-SDK
+cd ~/kocox2_ws/src/KocoX2/YDLidar-SDK
 pip install .
 ```
 
-### 2. LiDAR Testing
-```bash
-# Set USB permissions
-sudo chmod 777 /dev/ttyUSB0
+Set USB permissions and test the lidar directly:
 
-# Run test program
-cd ~/YDLidar-SDK/build
+```bash
+sudo chmod 777 /dev/ttyUSB0
+cd ~/kocox2_ws/src/KocoX2/YDLidar-SDK/build
 ./tri_test
 ```
 
-Note: Keep both YDLidar SDK and YDLidar ROS2 driver outside the src directory.
+### Simulation
 
-## Usage Instructions
+![Simulation](docs/images/sim.png)
 
-### Simulation Environment
-
-![simulation](sim.png)
-
-1. Launch Simulation
 ```bash
 ros2 launch kocox2_bringup bringup.launch.py use_sim_time:=True
-```
-
-2. Teleoperation
-```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
-3. SLAM Navigation
+Map and navigate in sim:
+
 ```bash
 ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=True exploration:=True
 ```
 
-### Real Robot Operation
+### Real robot
 
-#### Robot Network Setup
-1. Configure WiFi in `/etc/netplan/50-cloud-init.yaml`:
-```yaml
-wifis:
-  wlan0:
-    optional: true
-    access-points:
-      "your_ssid_name":
-        password: "your_password"
-    dhcp4: true
-```
+Set the robot's Wi-Fi in `/etc/netplan/50-cloud-init.yaml`, then connect over SSH:
 
-2. Connect to Robot
 ```bash
 ssh <rpi_username>@raspberrypi.local
 ```
 
-#### SLAM and Navigation
+Map:
 
-![rviz](rviz.png)
-
-
-1. Start Mapping
 ```bash
 ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=True
 ```
 
-2. Save Map
+Save the map. `map_saver_cli -f` takes a base filename, not a `.yaml` path; it writes
+`<name>.pgm` and `<name>.yaml` next to it:
+
 ```bash
-ros2 run nav2_map_server map_saver_cli -f /path_to_map/name_of_map_file.yaml
+ros2 run nav2_map_server map_saver_cli -f /path_to_map/my_map
 ```
 
-3. Navigate with Existing Map
+Navigate with a saved map:
+
 ```bash
-ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/map_file_name.yaml
-```
-![nodes](nodes.png)
-
-![topics](topics.png)
-
-### Development PC Setup
-
-1. Clone Repository
-```bash
-cd ~/kocox2_ws/src
-git clone https://github.com/Kou-shik2004/KocoX2
+ros2 launch kocox2_bringup autobringup.launch.py use_sim_time:=False exploration:=False map:=/path_to_map/my_map.yaml
 ```
 
-2. Configure ROS Domain
+![RViz](docs/images/rviz.png)
+
+### Visualization from a development PC
+
 ```bash
 echo "export ROS_DOMAIN_ID=<unique_number>" >> ~/.bashrc
 source ~/.bashrc
+ros2 launch kocox2_bringup rviz.launch.py
 ```
 
-3. Launch Visualization
-```bash
-ros2 launch kocox2_description rviz.launch.py
-```
+## How it works
 
-## Package Structure
+Four packages:
 
-- **kocox2_bringup**: Launch files and robot initialization
-- **kocox2_description**: Robot URDF and visual models
-- **kocox2_navigation**: Navigation parameters and configuration
-- **kocox2_slam**: SLAM configuration
+| Package | Contents |
+|---|---|
+| `kocox2_bringup` | All launch files, plus the saved maps (`maps/`) |
+| `kocox2_description` | URDF/xacro, meshes, Gazebo plugin config, the simulation world, RViz configs |
+| `kocox2_navigation` | Nav2 params (`nav2_params_robot.yaml`, `nav2_params_simulation.yaml`) and the Cartographer config (`slam.lua`) |
+| `kocox2_firmware` | `differential.py`, the only node this repo runs on its own hardware |
 
-## Configuration
+`differential.py` subscribes to `cmd_vel` and drives the motors over `RPi.GPIO`: it converts
+linear and angular velocity into left/right wheel speeds, maps them to PWM duty cycle, and sets
+the H-bridge direction pins. It has no encoder input and publishes no odometry.
 
-### Navigation Parameters
-Located in `config/nav2_params.yaml`:
-- DWB planner parameters
-- Costmap configurations
-- AMCL parameters
+Sensing and localization are Cartographer (2D SLAM, laser scan matching, no odometry input) and
+Nav2's AMCL for localizing against a saved map. Navigation is Nav2's NavFn global planner and DWB
+local controller, using the standard costmap layers built from the YDLidar scan.
 
-### SLAM Parameters
-Located in `config/slam.lua`:
-- Cartographer configurations
-- Loop closure settings
-- Map resolution
+## Known limitations
 
-## Troubleshooting
-
-1. **USB Connection Issues**
-   - Check USB permissions
-   - Verify correct port assignment
-   - Test with `tri_test` program
-
-2. **Navigation Problems**
-   - Verify TF tree completeness
-   - Check sensor data publication
-   - Validate costmap updates
-
-3. **Network Issues**
-   - Confirm ROS_DOMAIN_ID settings
-   - Check network connectivity
-   - Verify hostname resolution
-
-## Important Tips
-
-- Always source ROS2 and workspace in new terminals
-- Place robot at original mapping position when using saved maps
-- Use `use_sim_time:=False` for real robot operation
-- Backup navigation parameters before modification
-- Regular calibration improves performance
-  
-  
-
-
+- **No wheel feedback.** No encoders, no `/odom`, no closed-loop velocity control.
+- **Wheel separation disagrees across three files**: the URDF joint origins give 0.141 m, the
+  Gazebo diff-drive plugin uses 0.172 m, and the firmware node uses 0.17 m. Worth measuring
+  against the physical robot and reconciling.
+- **`nav2_params_robot.yaml` and `nav2_params_simulation.yaml` differ by only two values**
+  (`max_vel_x`, `acc_lim_theta`). The rest of the tuning is shared between sim and the real robot.
+- **Some Nav2 parameter names predate Humble** (`recoveries_server` / `nav2_recoveries/*`,
+  `default_bt_xml_filename`). Humble renamed these; on Humble, that section of config is ignored
+  and the affected servers fall back to their defaults.
+- **`kocox2_navigation/config/ekf.yaml`** is not launched by anything in this repo. There's no
+  `/imu` topic and no `/odom` topic for it to fuse.
+- Commands in this README weren't rebuilt or re-run while preparing this documentation.

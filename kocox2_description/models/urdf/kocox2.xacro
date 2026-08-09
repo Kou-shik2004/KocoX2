@@ -3,9 +3,9 @@
 
 	<xacro:include filename="$(find kocox2_description)/models/urdf/materials.xacro" />
 	
-	<xacro:include filename="$(find kocox2_gazebo)/gazebo/kocox2_materials.gazebo" />
-	<xacro:include filename="$(find kocox2_gazebo)/gazebo/kocox2_physics.gazebo" />
-	<xacro:include filename="$(find kocox2_gazebo)/gazebo/kocox2_plugins.gazebo" />
+	<xacro:include filename="$(find kocox2_description)/gazebo/kocox2_materials.gazebo" />
+	<xacro:include filename="$(find kocox2_description)/gazebo/kocox2_physics.gazebo" />
+	<xacro:include filename="$(find kocox2_description)/gazebo/kocox2_plugins.gazebo" />
 
 	<link name="base_link">
 		<inertial>
